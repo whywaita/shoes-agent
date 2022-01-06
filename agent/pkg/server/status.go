@@ -53,11 +53,11 @@ func (s *AgentServer) GetAgentStatus(ctx context.Context, req *pb.GetAgentStatus
 }
 
 func getStatusFilePath() string {
-	return filepath.Join(PathStatus, FileStatus)
+	return filepath.Join(os.TempDir(), FileStatus)
 }
 
 func getScriptFilePath() string {
-	return filepath.Join(PathStatus, FileScript)
+	return filepath.Join(os.TempDir(), FileScript)
 }
 
 // getAgentStatus get status of agent from status file
