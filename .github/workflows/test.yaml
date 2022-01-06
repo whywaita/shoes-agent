@@ -34,8 +34,8 @@ jobs:
       - name: Lint
         run: |
           cd ${{ matrix.target }}
-          GO111MODULE=off GOBIN=$(pwd)/bin go get golang.org/x/lint/golint
-          bin/golint -set_exit_status ./...
+          go install honnef.co/go/tools/cmd/staticcheck@latest
+          staticcheck ./...
       - name: vet
         run: |
           cd ${{ matrix.target }}
@@ -52,4 +52,3 @@ jobs:
         with:
           fetch-depth: 1
       - run: ./proto.sh
-

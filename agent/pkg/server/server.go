@@ -59,7 +59,6 @@ func (s *AgentServer) Run() error {
 		if err := os.Remove(getStatusFilePath()); err != nil {
 			log.Printf("failed to delete status file: %+v\n", err)
 		}
-		return
 	}()
 
 	if err := grpcServer.Serve(lis); err != nil {
@@ -97,7 +96,7 @@ func execute(setupScript string) error {
 	}
 
 	if out, err := exec.Command(getScriptFilePath()).CombinedOutput(); err != nil {
-		return fmt.Errorf("failed to execute setup script: %+v out: %s\n", err, out)
+		return fmt.Errorf("failed to execute setup script: %+v out: %s", err, out)
 	}
 
 	return nil

@@ -13,7 +13,9 @@ import (
 )
 
 const (
+	// FileStatus is filename for status
 	FileStatus = "shoes-agent.status"
+	// FileScript is filename for script
 	FileScript = "shoes-agent.sh"
 )
 

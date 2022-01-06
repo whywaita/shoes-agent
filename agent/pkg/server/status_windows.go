@@ -7,5 +7,6 @@ import (
 )
 
 var (
+	// PathStatus is filepath for status
 	PathStatus = filepath.Join("C", "ProgramData", "shoes-agent")
 )
