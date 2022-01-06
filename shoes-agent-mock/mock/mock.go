@@ -15,6 +15,7 @@ func New() *Mock {
 	return &Mock{}
 }
 
+// GetAgent response an agent
 func (m *Mock) GetAgent(ctx context.Context, cloudID string) (*backend.Agent, error) {
 	return &backend.Agent{
 		CloudID:  cloudID,
@@ -23,6 +24,7 @@ func (m *Mock) GetAgent(ctx context.Context, cloudID string) (*backend.Agent, er
 	}, nil
 }
 
+// ListAgent response a list of agent
 func (m *Mock) ListAgent(ctx context.Context) ([]backend.Agent, error) {
 	return []backend.Agent{
 		{
@@ -33,10 +35,12 @@ func (m *Mock) ListAgent(ctx context.Context) ([]backend.Agent, error) {
 	}, nil
 }
 
-func (m Mock) CreateInstance(ctx context.Context) error {
+// CreateInstance create an instance
+func (m Mock) CreateInstance(ctx context.Context, runnerName string) error {
 	return nil
 }
 
+// DeleteInstance delete an instance
 func (m *Mock) DeleteInstance(ctx context.Context, cloudID string) error {
 	return nil
 }

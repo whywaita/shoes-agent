@@ -6,10 +6,12 @@ import (
 	"google.golang.org/grpc"
 )
 
+// Client is client for agent
 type Client struct {
 	Conn *grpc.ClientConn
 }
 
+// NewClient create a Client
 func NewClient(agentEndpoint string) (*Client, error) {
 	grpcConn, err := grpc.Dial(
 		agentEndpoint,

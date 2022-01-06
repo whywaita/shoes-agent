@@ -46,6 +46,7 @@ type AgentClient struct {
 	myshoespb.UnimplementedShoesServer
 }
 
+// NewAgentClient create a AgentClient
 func NewAgentClient(backend backend.Backend, shoesType string) *AgentClient {
 	return &AgentClient{
 		Backend:   backend,
@@ -121,6 +122,7 @@ func isRetryableError(err error) bool {
 	return false
 }
 
+// AddInstance create an instance to backend service and start actions/runner
 func (a *AgentClient) AddInstance(ctx context.Context, req *myshoespb.AddInstanceRequest) (*myshoespb.AddInstanceResponse, error) {
 	err := a.Backend.CreateInstance(ctx, req.RunnerName)
 	if err != nil && !errors.Is(err, ErrAlreadyCreated) {
@@ -158,6 +160,7 @@ func (a *AgentClient) AddInstance(ctx context.Context, req *myshoespb.AddInstanc
 	}, nil
 }
 
+// DeleteInstance delete an instance
 func (a *AgentClient) DeleteInstance(ctx context.Context, req *myshoespb.DeleteInstanceRequest) (*myshoespb.DeleteInstanceResponse, error) {
 	if _, err := a.Backend.GetAgent(ctx, req.CloudId); err != nil {
 		return nil, status.Errorf(codes.NotFound, "failed to get agent: %+v", err)
