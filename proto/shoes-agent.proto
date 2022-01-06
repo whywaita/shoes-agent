@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package shoesagent;
+
+option go_package = "github.com/whywaita/shoes-agent/proto.go/shoesagent";
+
+service ShoesAgent {
+  rpc GetAgentStatus(GetAgentStatusRequest) returns (GetAgentStatusResponse) {}
+  rpc StartRunner(StartRunnerRequest) returns (StartRunnerResponse) {}
+}
+
+// type
+enum Status {
+  Unknown = 0;
+  Booting = 1;
+  Idle = 2;
+  Active = 3;
+  Offline = 4;
+}
+
+// req / resp
+message GetAgentStatusRequest {}
+
+message GetAgentStatusResponse {
+  Status status = 1;
+}
+
+message StartRunnerRequest {
+  string setup_script = 1;
+}
+
+message StartRunnerResponse {}
