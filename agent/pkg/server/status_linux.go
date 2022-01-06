@@ -4,5 +4,5 @@ package server
 
 const (
 	// PathStatus is filepath for status
-	PathStatus = "/var/run/"
+	PathStatus = "/tmp/"
 )
